@@ -28,24 +28,21 @@ SDL_Window *render_init_window(u32 width, u32 height){
 		SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE
 	);
 
-	if (!window){
-		ERROR_EXIT("Failed to init window: %s\n", SDL_GetError);
-	}
+	if (!window) {
+        ERROR_EXIT("Failed to init window: %s\n", SDL_GetError());
+    }
 
-	SDL_GL_CreateContext(window);
-	if(!gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress)){
-		ERROR_EXIT("Failed to load GL: %s\n", SDL_GetError);
-		exit(1);
-	}
+    SDL_GL_CreateContext(window);
+    if (!gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress)) {
+        ERROR_EXIT("Failed to load GL: %s\n", SDL_GetError());
+    }
 
-	puts("OpenGL Loaded");
-	printf("Vendor: %s\n", glGetString(GL_VENDOR));
-	printf("Renderer: %s\n", glGetString(GL_RENDERER));
-	printf("Version: %s\n", glGetString(GL_VERSION));
+    puts("OpenGL Loaded");
+    printf("Vendor:   %s\n", glGetString(GL_VENDOR));
+    printf("Renderer: %s\n", glGetString(GL_RENDERER));
+    printf("Version:  %s\n", glGetString(GL_VERSION));
 
-	puts("Hello there!");
-	return 0;
-
+    return window;
 }
 void render_init_quad(u32 *vao, u32 *vbo, u32 *ebo){
     //x, y, z, u, v
