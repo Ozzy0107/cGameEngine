@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "glad.h": "c",
+        "sdl.h": "c",
+        "khrplatform.h": "c"
+    }
+}
